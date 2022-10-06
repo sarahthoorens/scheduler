@@ -37,6 +37,7 @@ body {
   }
   
   .hour {
+    text-align: center;
     background-color: #ffffff;
     color: #000000;
     border-top: 1px dashed #000000;
@@ -69,4 +70,11 @@ body {
     font-size: 20px;
     transition: all 0.3s ease-in-out;
   }
-  
+
+th p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    
+}
