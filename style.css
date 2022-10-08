@@ -36,12 +36,12 @@ body {
     border-top: 1px solid white;
   }
   
-  .hour {
+  /* .hour {
     text-align: center;
     background-color: #ffffff;
     color: #000000;
     border-top: 1px dashed #000000;
-  }
+  } */
   
   .past {
     background-color: #d3d3d3;

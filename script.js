@@ -1,5 +1,6 @@
 const dateTimeEl = $('#currentDay')
 const clearAll = $('#clear-btn')
+let rightNow
 
 let calendarEntry8= document.getElementById('input8')
 let calendarEntry9= document.getElementById('input9')
@@ -15,7 +16,7 @@ let calendarEntry16= document.getElementById('input16')
 
 // Today's date and timestamp using moment.js
 function displayTime() {
-    var rightNow = moment().format('MMM DD, YYYY [at] hh:mm:ss a');
+    var rightNow = moment().format('MMM DD, YYYY [at] HH:mm:ss a');
     dateTimeEl.text(rightNow);
   }
   setInterval(displayTime, 1000);
@@ -80,6 +81,54 @@ clearAll.on('click', function (event) {
 
 })
 
+// Change row color based on current hour of the day
+
+let today = new Date();
+let currentHour = (today.getHours());
+console.log(currentHour);
+let convertedCurrentHour = `${currentHour}:00`;
+console.log(convertedCurrentHour);
+
+
+let rowEl = document.querySelectorAll('tr'); 
+console.log(rowEl);
+let hourEl = []
+
+$(window).on('load', function(){
+let hourEl = document.querySelectorAll('p.hour')
+const len = hourEl.length;
+for (let i = 0; i < len; i++) {
+    console.log(hourEl[i].innerText);
+if (convertedCurrentHour < hourEl[i].innerText) {
+   rowEl[i].setAttribute('class','future');
+}
+   else if (convertedCurrentHour > hourEl[i].innerText) {
+    rowEl[i].setAttribute('class', 'past');
+}
+else if (convertedCurrentHour === hourEl[i].innerText) {
+    rowEl[i].setAttribute('class', 'present');
+}
+   }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+// if (convertedCurrentHour < (hourEl.innerText)) { 
+//     rowEl.classList.add('past');
+//  };
+//  else if (convertedCurrentHour === hourEl.innerText) {
+ 
+//     rowEl.classList.add('present');
+    
 // let calendarEntries = [
 //     at8, at9, at10, at11, at12, at13, at14, at15, at16
 // ]
