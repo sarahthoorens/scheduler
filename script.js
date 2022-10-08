@@ -22,7 +22,7 @@ function displayTime() {
   setInterval(displayTime, 1000);
   
 
-// Save new appointments upon page load
+// Save new appointment entries
 function saveLastEntry() {
     localStorage.setItem('appointment at 8', calendarEntry8.value)
     localStorage.setItem('appointment at 9', calendarEntry9.value);
@@ -36,12 +36,14 @@ function saveLastEntry() {
   
     console.log(calendarEntry8.value, calendarEntry16.value)
 }
+
+// runs a listener for input button click , then runs save function to store a new entry
 $('span > button').on('click', function(event){
 event.preventDefault();
 console.log('i have been clicked');
     saveLastEntry();
 })
-
+//renders all values stored in local storage when function is run 
 function renderAllEntries () {
     var lastEntry8 = localStorage.getItem('appointment at 8');
     var lastEntry9 = localStorage.getItem('appointment at 9');
@@ -68,13 +70,13 @@ function renderAllEntries () {
     }
 }
 
-
+// refreshes screen with local storage items 
 function init() {
     renderAllEntries();
 }
 init();
 
-
+// clears all local storage when user clicks button
 clearAll.on('click', function (event) {
     localStorage.clear();
     window.location.reload();
@@ -82,18 +84,19 @@ clearAll.on('click', function (event) {
 })
 
 // Change row color based on current hour of the day
-
+// // converts current hour to proper format for comparison
 let today = new Date();
+console.log(today)
 let currentHour = (today.getHours());
 console.log(currentHour);
 let convertedCurrentHour = `${currentHour}:00`;
 console.log(convertedCurrentHour);
 
-
-let rowEl = document.querySelectorAll('tr'); 
-console.log(rowEl);
+// selects the rows that will change color
+let rowEl = document.querySelectorAll('.inputs'); 
 let hourEl = []
 
+// runs the change color function on window load 
 $(window).on('load', function(){
 let hourEl = document.querySelectorAll('p.hour')
 const len = hourEl.length;
@@ -102,11 +105,14 @@ for (let i = 0; i < len; i++) {
 if (convertedCurrentHour < hourEl[i].innerText) {
    rowEl[i].setAttribute('class','future');
 }
-   else if (convertedCurrentHour > hourEl[i].innerText) {
+else if (convertedCurrentHour > hourEl[i].innerText) {
     rowEl[i].setAttribute('class', 'past');
 }
 else if (convertedCurrentHour === hourEl[i].innerText) {
     rowEl[i].setAttribute('class', 'present');
+}
+else {
+    rowEl[i].setAttribute('class', ' ');
 }
    }
 });
