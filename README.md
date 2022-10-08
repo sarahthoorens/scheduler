@@ -44,11 +44,11 @@ The following animation demonstrates the application functionality:
 
 #### Full-size version
 
-<img src="./assets/work day scheduler" alt="header">
+<img src="scheduler/assets/work day scheduler.png" alt="header">
 
 #### Responsive version
 
-<img src="./assets/responsive" alt="responsive window">
+<img src="scheduler/assets/responsive.png" alt="responsive window">
 
 **Challenges**
 
